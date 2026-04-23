@@ -107,6 +107,8 @@ Satish Dhankar
 ---
 
 ## ⭐ Give a Star
+
+
 ## 🏗️ Architecture Diagram
 
 ```mermaid
@@ -156,5 +158,6 @@ Doctor --> DB
 Appointment --> DB
 Billing --> DB
 Hospital --> DB
+```
 
-If you like this project, please give it a ⭐ on GitHub!
+If you like this project, give it a ⭐ on GitHub!
