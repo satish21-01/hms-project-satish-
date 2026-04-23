@@ -1,0 +1,32 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: USER-SERVICE
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/hms_user_db
+    username: root
+    password: test
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update   # dev ke liye (prod me validate/use carefully)
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+  jackson:
+    serialization:
+      indent_output: true
+
+eureka:
+  client:
+    enabled: false   # agar abhi local run kar rahe ho
+
+jwt:
+  secret: my-super-secret-key-for-hms-project-123456
+  expiration: 36000000

@@ -1,0 +1,29 @@
+server:
+  port: 8086
+
+spring:
+  application:
+    name: doctor-service
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/hms_doctor_db
+    username: root
+    password: test
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+# ✅ Eureka (if using service discovery)
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+
+# (optional but useful)
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info

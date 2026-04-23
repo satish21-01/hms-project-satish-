@@ -1,0 +1,37 @@
+server:
+  port: 8087
+
+spring:
+  application:
+    name: BILLING-SERVICE   # 🔥 यही Eureka में दिखेगा
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/hms_billing_db
+    username: root
+    password: test
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+  kafka:
+    bootstrap-servers: localhost:9092
+
+    # 🔹 CONSUMER (Appointment → Billing)
+    consumer:
+      group-id: billing-group
+      auto-offset-reset: latest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+
+    # 🔹 PRODUCER (Billing → Kafka Payment Event)
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+
+# 🔥 Eureka config (MOST IMPORTANT)
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka

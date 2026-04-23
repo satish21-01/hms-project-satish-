@@ -1,0 +1,43 @@
+server:
+  port: 8083
+
+spring:
+  application:
+    name: APPOINTMENT-SERVICE
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/hms_appointment_db
+    username: root
+    password: test
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+  kafka:
+    bootstrap-servers: kafka:9092   # 🔥 change here
+
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+
+    consumer:
+      group-id: appointment-group
+      auto-offset-reset: earliesta
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring.json.trusted.packages: "*"
+
+eureka:
+  client:
+    enabled: false   # 🔥 abhi disable karo (Docker me nahi hai abhi)
+
+kafka:
+  topic:
+    appointment-booked: appointment-booked
+
+jwt:
+  secret: my-super-secret-key-for-hms-project-123456
+  expiration: 36000000
