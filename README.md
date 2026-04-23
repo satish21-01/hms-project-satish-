@@ -112,24 +112,20 @@ Satish Dhankar
 ```mermaid
 flowchart TD
 
-Client[Client / Postman / UI]
-
-Gateway[API Gateway]
-
-Eureka[Service Registry (Eureka)]
-
+Client["Client / Postman / UI"]
+Gateway["API Gateway"]
+Eureka["Service Registry (Eureka)"]
 Kafka[(Kafka Broker)]
-
-User[User Service]
-Patient[Patient Service]
-Doctor[Doctor Service]
-Appointment[Appointment Service]
-Billing[Billing Service]
-Notification[Notification Service]
-Reporting[Reporting Service]
-Hospital[Hospital Service]
-
 DB[(Database)]
+
+User["User Service"]
+Patient["Patient Service"]
+Doctor["Doctor Service"]
+Appointment["Appointment Service"]
+Billing["Billing Service"]
+Notification["Notification Service"]
+Reporting["Reporting Service"]
+Hospital["Hospital Service"]
 
 Client --> Gateway
 
