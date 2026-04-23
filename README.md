@@ -1,5 +1,7 @@
 # 🏥 Hospital Management System (Microservices)
 
+A scalable microservices-based backend system for hospital management.
+
 ## 🚀 Overview
 
 This is a **Microservices-based Hospital Management System** built using modern backend technologies.
@@ -105,5 +107,58 @@ Satish Dhankar
 ---
 
 ## ⭐ Give a Star
+## 🏗️ Architecture Diagram
+
+```mermaid
+flowchart TD
+
+Client[Client / Postman / UI]
+
+Gateway[API Gateway]
+
+Eureka[Service Registry (Eureka)]
+
+Kafka[(Kafka Broker)]
+
+User[User Service]
+Patient[Patient Service]
+Doctor[Doctor Service]
+Appointment[Appointment Service]
+Billing[Billing Service]
+Notification[Notification Service]
+Reporting[Reporting Service]
+Hospital[Hospital Service]
+
+DB[(Database)]
+
+Client --> Gateway
+
+Gateway --> User
+Gateway --> Patient
+Gateway --> Doctor
+Gateway --> Appointment
+Gateway --> Billing
+Gateway --> Hospital
+
+User --> Eureka
+Patient --> Eureka
+Doctor --> Eureka
+Appointment --> Eureka
+Billing --> Eureka
+Notification --> Eureka
+Reporting --> Eureka
+Hospital --> Eureka
+
+Appointment --> Kafka
+Kafka --> Notification
+Kafka --> Reporting
+Kafka --> Billing
+
+User --> DB
+Patient --> DB
+Doctor --> DB
+Appointment --> DB
+Billing --> DB
+Hospital --> DB
 
 If you like this project, please give it a ⭐ on GitHub!
